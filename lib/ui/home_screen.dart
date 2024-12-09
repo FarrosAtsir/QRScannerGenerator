@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         leading: const Text(""),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -57,8 +57,8 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 BuildButton(
                     icon: Icons.qr_code_2,
@@ -75,19 +75,7 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor: const Color(0xFF553FB8),
                     onTap: () {
                       Navigator.pushNamed(context, '/scan');
-                    }),
-                BuildButton(
-                    icon: Icons.send_rounded,
-                    label: "Send",
-                    iconColor: Colors.white,
-                    backgroundColor: const Color(0xFF553FB8),
-                    onTap: () {}),
-                BuildButton(
-                    icon: Icons.print,
-                    label: "Print",
-                    iconColor: Colors.white,
-                    backgroundColor: const Color(0xFF553FB8),
-                    onTap: () {})
+                    })
               ],
             ),
           )
@@ -118,30 +106,27 @@ class BuildButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 170, // Lebar tetap untuk setiap tombol
-        height: 170, // Tinggi tetap untuk setiap tombol
+        width: double.infinity,
+        height: 250,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               decoration: BoxDecoration(
-                color: backgroundColor, // Warna latar ikon
-                borderRadius: BorderRadius.circular(12), // Sudut membulat ikon
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(12),
               ),
-              padding: const EdgeInsets.all(35),
-              child: Icon(
-                icon,
-                color: iconColor, // Warna ikon
-                size: 40, // Ukuran ikon lebih besar
-              ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 100, vertical: 35),
+              child: Icon(icon, color: iconColor, size: 100),
             ),
-            const SizedBox(height: 15), // Jarak antara ikon dan teks
+            const SizedBox(height: 15),
             Text(
               label,
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 16, // Ukuran teks
+                fontSize: 16,
               ),
             ),
           ],

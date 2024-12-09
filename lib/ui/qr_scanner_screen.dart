@@ -11,21 +11,18 @@ class QrScannerScreen extends StatefulWidget {
 
 class _QrScannerScreenState extends State<QrScannerScreen> {
   final MobileScannerController _controller = MobileScannerController(
-    detectionSpeed: DetectionSpeed.noDuplicates,
-    returnImage: true
-  );
+      detectionSpeed: DetectionSpeed.noDuplicates, returnImage: true);
   String? barcodeValue;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       showModalBottomSheet(
-        context: context, 
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        builder: (context) => const CustomSnackbar()
-      );
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => const CustomSnackbar());
     });
   }
 
@@ -56,18 +53,13 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             ),
           ),
           const Positioned(
-            bottom: 50,
-            left: 0,
-            right: 0,
-            child: Text(
-              "Point the QR Code into the box",
-              style: TextStyle(
-                color: Colors.white, 
-                fontWeight: FontWeight.bold,
-                fontSize: 20
-              )
-            )
-          )
+              bottom: 50,
+              left: 40,
+              child: Text("Point the QR Code into the box",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)))
         ],
       ),
     );
@@ -191,6 +183,7 @@ class CustomSnackbar extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
